@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learn to Eat for Fat Loss | DS Personal Training</title>
+<style>
+  :root {
+    --black: #000;
+    --purple: #CC80FF;
+    --white: #fff;
+    --grey: #888;
+    --dark: #0d0d0d;
+    --dark2: #141414;
+    --border: #1e1e1e;
+    --font-head: -apple-system, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+    --font-body: -apple-system, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NOISE TEXTURE */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* TOP BAR */
+  .top-bar {
+    background: var(--purple);
+    height: 6px;
+    width: 100%;
+  }
+
+  /* BRAND */
+  .brand-bar {
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .brand-dot {
+    width: 10px; height: 10px;
+    background: var(--purple);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--purple);
+  }
+
+  .brand-name {
+    font-family: var(--font-head);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--grey);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 60px 0 40px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 60px;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: rgba(148,0,255,0.15);
+    border: 1px solid rgba(148,0,255,0.4);
+    color: var(--purple);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+
+  .hero h1 {
+    font-family: var(--font-head);
+    font-size: clamp(36px, 8vw, 56px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--purple);
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    color: var(--grey);
+    font-weight: 300;
+    line-height: 1.7;
+    max-width: 560px;
+  }
+
+  /* SECTION STYLES */
+  section { margin-bottom: 70px; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--purple);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-family: var(--font-head);
+    font-size: clamp(26px, 5vw, 36px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+
+  h2 em { font-style: normal; color: var(--purple); }
+
+  p {
+    font-size: 16px;
+    color: #bbb;
+    line-height: 1.75;
+    font-weight: 300;
+    margin-bottom: 16px;
+  }
+
+  p strong { color: var(--white); font-weight: 500; }
+
+  /* PAIN POINTS */
+  .pain-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 32px 0;
+  }
+
+  .pain-list li {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    background: var(--dark2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--purple);
+    border-radius: 10px;
+    padding: 18px 20px;
+    font-size: 15px;
+    color: #ccc;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .pain-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* BIG STATEMENT */
+  .big-statement {
+    background: var(--dark2);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--purple);
+    border-radius: 12px;
+    padding: 32px 28px;
+    margin: 40px 0;
+  }
+
+  .big-statement p {
+    font-family: var(--font-head);
+    font-size: clamp(20px, 4vw, 26px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.4;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  .big-statement p em {
+    font-style: normal;
+    color: var(--purple);
+  }
+
+  /* WHAT YOU GET */
+  .week-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 28px 0;
+  }
+
+  .week-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 16px 20px;
+    background: var(--dark);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+
+  .week-num {
+    font-family: var(--font-head);
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--purple);
+    background: rgba(148,0,255,0.1);
+    border: 1px solid rgba(148,0,255,0.25);
+    border-radius: 6px;
+    padding: 4px 10px;
+    flex-shrink: 0;
+    letter-spacing: 0.04em;
+  }
+
+  .week-text {
+    font-size: 15px;
+    color: #ccc;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .week-text strong { color: var(--white); font-weight: 500; }
+
+  /* ABOUT DAVE */
+  .dave-box {
+    background: var(--dark2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px 28px;
+    margin: 32px 0;
+  }
+
+  .dave-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .dave-avatar {
+    width: 60px; height: 60px;
+    background: var(--purple);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-head);
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--white);
+    flex-shrink: 0;
+  }
+
+  .dave-name {
+    font-family: var(--font-head);
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 2px;
+  }
+
+  .dave-title {
+    font-size: 13px;
+    color: var(--grey);
+    font-weight: 300;
+  }
+
+  /* STAT BOXES */
+  .stat-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 28px 0;
+  }
+
+  .stat-box {
+    background: var(--dark);
+    border: 1px solid var(--purple);
+    border-radius: 10px;
+    padding: 24px 16px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .stat-val {
+    font-family: var(--font-head);
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--purple);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-lbl {
+    font-size: 12px;
+    color: var(--grey);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+
+  /* OBJECTIONS */
+  .objection {
+    background: var(--dark2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 24px;
+    margin-bottom: 16px;
+  }
+
+  .obj-q {
+    font-family: var(--font-head);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .obj-a {
+    font-size: 15px;
+    color: #999;
+    line-height: 1.65;
+    font-weight: 300;
+    margin: 0;
+  }
+
+  .obj-a strong { color: #ccc; font-weight: 500; }
+
+  /* FORM */
+  .form-section {
+    background: var(--dark2);
+    border: 1px solid rgba(148,0,255,0.3);
+    border-radius: 16px;
+    padding: 36px 32px;
+    margin: 40px 0 60px;
+  }
+
+  .form-section h3 {
+    font-family: var(--font-head);
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .form-section p {
+    font-size: 14px;
+    color: var(--grey);
+    margin-bottom: 28px;
+    font-weight: 300;
+  }
+
+  .form-field {
+    margin-bottom: 16px;
+  }
+
+  .form-field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--grey);
+    margin-bottom: 6px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .form-field input {
+    width: 100%;
+    background: var(--dark);
+    border: 1px solid var(--border);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 16px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-field input:focus { border-color: var(--purple); }
+
+  .wa-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    background: var(--purple);
+    color: var(--white);
+    font-family: var(--font-head);
+    font-size: 18px;
+    font-weight: 800;
+    padding: 18px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 24px;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+
+  .wa-btn:hover {
+    background: #aa00ff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(148,0,255,0.4);
+  }
+
+  .form-note {
+    font-size: 12px;
+    color: #444;
+    text-align: center;
+    margin-top: 14px;
+    line-height: 1.6;
+  }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 50px 0;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 24px;
+    text-align: center;
+    color: #333;
+    font-size: 12px;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 480px) {
+    .stat-row { grid-template-columns: 1fr 1fr; }
+    .form-section { padding: 28px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar"></div>
+
+<div class="brand-bar">
+  <div class="brand-dot"></div>
+  <span class="brand-name">DS Personal Training</span>
+</div>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-tag">6 Week Group Programme</div>
+    <h1>Learn to eat<br>for <em>fat loss.</em></h1>
+    <p class="hero-sub">Six weeks. Group coaching. You leave knowing exactly how fat loss works and how to make it work for you.</p>
+  </div>
+
+  <!-- SECTION 1: THE PAIN -->
+  <section>
+    <h2>How many times have you<br>started a diet on <em>a Monday?</em></h2>
+
+    <ul class="pain-list">
+      <li><span class="pain-icon">📉</span><span>Slimming World. Weight Watchers. Keto. Calorie counting. Lost weight. Put it all back on.</span></li>
+      <li><span class="pain-icon">🤔</span><span>You eat what you think is healthy. The scales don't move. You don't know why.</span></li>
+      <li><span class="pain-icon">🔄</span><span>Same cycle every few months. Start strong. Fall off. Start again.</span></li>
+      <li><span class="pain-icon">💸</span><span>You've spent money on programmes, shakes, apps. Nothing has lasted longer than a few weeks.</span></li>
+    </ul>
+
+    <div class="big-statement">
+      <p>Those programmes told you what to eat. <em>None of them told you why.</em></p>
+    </div>
+  </section>
+
+  <!-- SECTION 2: THE REAL REASON -->
+  <section>
+    <h2>This isn't a willpower problem.<br><em>It's an information problem.</em></h2>
+
+    <p>Nobody has ever explained to you what a calorie deficit actually is. How to stay in one without being hungry all the time. Why the food choices you make matter. The difference between calorie-dense foods and volume eating.</p>
+
+    <p>It's not complicated. It's just stuff nobody ever showed you.</p>
+
+    <p>Every single person who has come through this programme and followed it has lost over a stone in the six weeks. Not because losing a stone is what I promise. Because when you understand how to eat for fat loss, the weight comes off. Simple as that.</p>
+  </section>
+
+  <!-- SECTION 3: THE PROGRAMME -->
+  <section>
+    <h2>What the <em>six weeks</em> gives you.</h2>
+
+    <ul class="week-list">
+      <li class="week-item">
+        <span class="week-num">01</span>
+        <span class="week-text">You understand exactly why you've struggled to lose weight before. Not a guess. The actual reason.</span>
+      </li>
+      <li class="week-item">
+        <span class="week-num">02</span>
+        <span class="week-text">You know what a calorie deficit is, what yours should be, and how to stay in it without feeling like you're on a diet.</span>
+      </li>
+      <li class="week-item">
+        <span class="week-num">03</span>
+        <span class="week-text">You know how to eat more food, feel fuller, and still lose weight. Volume eating, calorie-dense foods. It all makes sense.</span>
+      </li>
+      <li class="week-item">
+        <span class="week-num">04</span>
+        <span class="week-text">You can eat out, have a weekend, have a life and still lose weight. Because you know what you're doing.</span>
+      </li>
+      <li class="week-item">
+        <span class="week-num">05</span>
+        <span class="week-text">You leave with the knowledge to keep going on your own. No programme to follow. No plan to buy.</span>
+      </li>
+    </ul>
+  </section>
+
+  <hr class="divider">
+
+  <!-- SECTION 4: ABOUT DAVE -->
+  <section>
+    <div class="dave-box">
+      <div class="dave-header">
+        <div class="dave-avatar">DS</div>
+        <div>
+          <div class="dave-name">Dave Stewart</div>
+          <div class="dave-title">DS Personal Training</div>
+        </div>
+      </div>
+      <p style="margin:0 0 16px; color:#aaa;">I lost over 100lbs. Not by following a meal plan. By learning how fat loss works and fitting it around my actual life as a Scottish dad with a job and a family.</p>
+      <p style="margin:0; color:#aaa;">I've worked with people who've tried every diet going. They're not lazy. They just never had the right information. That's what this fixes.</p>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-val" style="font-size:22px">Lose weight</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val" style="font-size:22px">Improve knowledge</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val" style="font-size:22px">Eat consciously</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val" style="font-size:22px">Drop a clothes size</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: OBJECTIONS -->
+  <section>
+    <h2>Questions you're<br><em>probably asking.</em></h2>
+
+    <div class="objection">
+      <div class="obj-q">"I've tried everything. Why would this be different?"</div>
+      <p class="obj-a">Every programme you've tried told you what to eat. This one explains why. That's the bit that's been missing.</p>
+    </div>
+
+    <div class="objection">
+      <div class="obj-q">"I haven't got time for something complicated."</div>
+      <p class="obj-a">It's group coaching that fits around your week. No meal prep. No gym twice a day. The information you need and support to apply it.</p>
+    </div>
+
+    <div class="objection">
+      <div class="obj-q">"What results can I expect?"</div>
+      <p class="obj-a">Everyone who has followed this has lost over a stone in six weeks. More importantly they've left knowing how to keep it off.</p>
+    </div>
+
+    <div class="objection">
+      <div class="obj-q">"Is this just another diet?"</div>
+      <p class="obj-a">No banned foods. No rigid eating plan. You learn how to make your own food choices work for fat loss.</p>
+    </div>
+  </section>
+
+  <!-- FORM + CTA -->
+  <div class="form-section" id="signup">
+    <h3>Interested?</h3>
+    <p>Drop your first name and message me. I'll get back to you on WhatsApp.</p>
+
+    <div class="form-field">
+      <label>First Name</label>
+      <input type="text" id="firstName" placeholder="e.g. Sarah">
+    </div>
+
+    <a href="#" class="wa-btn" id="waBtn" onclick="handleSubmit(event)">
+      💬 Message Dave on WhatsApp
+    </a>
+
+    <p class="form-note">No commitment. No hard sell. Just a chat.</p>
+  </div>
+
+</div>
+
+<footer>
+  DS Personal Training · @davestewartpt<br>
+  <span style="color:#222; margin-top:6px; display:block;">Support · Structure · Success</span>
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const name = document.getElementById('firstName').value.trim();
+  if (!name) { alert('Please enter your first name.'); return; }
+  const msg = encodeURIComponent(`Hi Dave, my name is ${name}. I'm interested in the 6 week eating for fat loss programme.`);
+  window.open(`https://wa.me/447356262792?text=${msg}`, '_blank');
+}
+</script>
+
+</body>
+</html>
